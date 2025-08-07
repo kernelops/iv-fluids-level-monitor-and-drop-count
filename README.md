@@ -79,6 +79,7 @@ pip install pandas
 pip install matplotlib
 pip install seaborn
 pip install scikit-learn
+pip install kagglehub
 ```
 
 
@@ -167,11 +168,26 @@ CLASS_LABELS = ['sal_data_100', 'sal_data_80', 'sal_data_50', 'sal_data_empty']
 
 ## 🎓 Training
 
+### Level Detection Model
 The level detection model was trained using the notebook `iv-fluids-final-working.ipynb` with:
 - **Dataset**: IV fluids level dataset from Mendeley Data
 - **Preprocessing**: Negative filtering and 32x32 resizing
 - **Architecture**: CNN with dropout for regularization
 - **Training**: Early stopping and model checkpointing
+
+### Drop Detection Model
+The drop counting model was trained using YOLO with:
+- **Dataset**: IV Fluids Detection Annotated Dataset from Kaggle
+- **Download**: Use KaggleHub to download the dataset:
+```python
+import kagglehub
+
+# Download latest version
+path = kagglehub.dataset_download("nishanthegde2315/iv-fluids-detection-annotated-dataset")
+print("Path to dataset files:", path)
+```
+- **Model**: YOLO-based object detection for real-time drop tracking
+- **Output**: Bounding boxes and track IDs for individual drops
 
 ## 📈 Future Enhancements
 
@@ -194,17 +210,14 @@ The level detection model was trained using the notebook `iv-fluids-final-workin
 
 This is an educational and research project. No formal license is provided. This project is intended for academic and research purposes only.
 
-## 📝 Authors
-
-1. [Nishant V H](https://github.com/NishantHegde2305)
-2. Saksham Gupta
-
 ## 🙏 Acknowledgments
 
-- Dataset sources: Mendeley Data (DOI: 10.17632/9mcj3rvvxb.1, 10.17632/n8k2zfr6xm.2)
+- **Level Detection Dataset**: Mendeley Data (DOI: 10.17632/9mcj3rvvxb.1, 10.17632/n8k2zfr6xm.2)
+- **Drop Detection Dataset**: IV Fluids Detection Annotated Dataset by nishanthegde2315 on Kaggle
+- YOLO implementation: Ultralytics
+- Computer vision: OpenCV
+- Deep learning: TensorFlow/Keras
 
 ---
 
-
 **Note**: This system is designed for research and educational purposes. For clinical use, additional validation and regulatory compliance may be required. 
-
