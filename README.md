@@ -177,7 +177,7 @@ The level detection model was trained using the notebook `iv-fluids-final-workin
 
 ### Drop Detection Model
 The drop counting model was trained using YOLO with:
-- **Dataset**: IV Fluids Detection Annotated Dataset from Kaggle
+- **Dataset**: Self-annotated IV Fluids Detection Annotated Dataset from Kaggle
 - **Download**: Use KaggleHub to download the dataset:
 ```python
 import kagglehub
@@ -208,16 +208,18 @@ print("Path to dataset files:", path)
 
 ## 📄 License
 
-This is an educational and research project. No formal license is provided. This project is intended for academic and research purposes only.
+This project is intended for academic and research purposes only.
+
+## Authors
+1. Nishant V H [https://github.com/kernelops]
+2. Saksham Gupta
+3. Atul Mishra
 
 ## 🙏 Acknowledgments
 
 - **Level Detection Dataset**: Mendeley Data (DOI: 10.17632/9mcj3rvvxb.1, 10.17632/n8k2zfr6xm.2)
-- **Drop Detection Dataset**: IV Fluids Detection Annotated Dataset by nishanthegde2315 on Kaggle
-- YOLO implementation: Ultralytics
-- Computer vision: OpenCV
-- Deep learning: TensorFlow/Keras
-
+- **Drop Detection Dataset**: IV Fluids Detection Annotated Dataset by nishanthegde2315 on Kaggle (Self-annotated dataset)
 ---
+
 
 **Note**: This system is designed for research and educational purposes. For clinical use, additional validation and regulatory compliance may be required. 
