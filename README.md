@@ -202,11 +202,9 @@ This is an educational and research project. No formal license is provided. This
 ## 🙏 Acknowledgments
 
 - Dataset sources: Mendeley Data (DOI: 10.17632/9mcj3rvvxb.1, 10.17632/n8k2zfr6xm.2)
-- YOLO implementation: Ultralytics
-- Computer vision: OpenCV
-- Deep learning: TensorFlow/Keras
 
 ---
 
 
 **Note**: This system is designed for research and educational purposes. For clinical use, additional validation and regulatory compliance may be required. 
+
