@@ -194,6 +194,11 @@ The level detection model was trained using the notebook `iv-fluids-final-workin
 
 This is an educational and research project. No formal license is provided. This project is intended for academic and research purposes only.
 
+## 📝 Authors
+
+1. [Nishant V H](https://github.com/NishantHegde2305)
+2. Saksham Gupta
+
 ## 🙏 Acknowledgments
 
 - Dataset sources: Mendeley Data (DOI: 10.17632/9mcj3rvvxb.1, 10.17632/n8k2zfr6xm.2)
@@ -202,5 +207,6 @@ This is an educational and research project. No formal license is provided. This
 - Deep learning: TensorFlow/Keras
 
 ---
+
 
 **Note**: This system is designed for research and educational purposes. For clinical use, additional validation and regulatory compliance may be required. 
