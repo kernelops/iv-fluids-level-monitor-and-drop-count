@@ -22,7 +22,7 @@ Changes v2 (2025-07-26)
 """
 
 
-# Optional Twilio support ----------------------------------------------------
+
 ENABLE_SMS_ALERT = False  # <-- Set to True after filling the credentials below
 TWILIO_ACCOUNT_SID = "YOUR_ACCOUNT_SID"
 TWILIO_AUTH_TOKEN = "YOUR_AUTH_TOKEN"
@@ -42,8 +42,8 @@ else:
 # ---------------------------------------------------------------------------
 
 # ---------------- Configuration ----------------
-MODEL_PATH = r'F:\\CCVR project\\final_working\\iv-fluids-level-detection.h5'
-INPUT_PATH = r'F:\\CCVR project\\final_working\\50_3.jpg'  # or video e.g. r'F:\CCVR\drip3.mp4'
+MODEL_PATH = r'<your_path>/models/iv-fluids-level-detection-model.h5'
+INPUT_PATH = r'<your_path>/testing/level_monitor/80.png'  # or video e.g. r'<your_path>/video.mp4'
 
 MODEL_IMG_SIZE = 32
 CLASS_LABELS = ['sal_data_100', 'sal_data_80', 'sal_data_50', 'sal_data_empty']

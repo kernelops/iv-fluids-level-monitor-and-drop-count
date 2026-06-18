@@ -2,6 +2,25 @@
 
 A comprehensive computer vision system for monitoring intravenous (IV) fluid administration, featuring both drop counting and fluid level detection capabilities. This system implements multiple detection approaches for robust IV fluid monitoring in clinical and research settings.
 
+## Publication
+
+This work has been published in **IEEE Access**:
+
+> **An Integrated Dual-Module Computer Vision System for IV Drip Rate and Fluid Level Monitoring**
+> IEEE Access, Volume 14
+> DOI: [10.1109/ACCESS.2026.3687474](https://doi.org/10.1109/ACCESS.2026.3687474)
+> Paper link: https://ieeexplore.ieee.org/abstract/document/11494667
+
+If you use this work in your research, please cite the paper above.
+
+### Abstract
+
+Manual monitoring of intravenous (IV) therapy is labor-intensive and prone to human error, creating risks to patient safety. Prior computer-vision approaches have tackled drip rate estimation and fluid level monitoring separately, limiting their real-world clinical applicability. This work presents and validates a dual-module computer vision framework for a practical, automated IV monitoring system that addresses both tasks simultaneously.
+
+For drip rate estimation, the paper conducts a comparative study of two deep learning paradigms on a custom dataset of 3,458 images, evaluated on a strictly held-out test set: a YOLOv8 object detector achieving mAP@0.50 of 95.34%, and a heatmap-based point-event regression network (ResNet-18 encoder with a convolutional decoder) achieving 88.44% frame-wise accuracy and 95.16% recall. A bespoke CNN handles fluid level classification, reaching 95.26% test accuracy on a public benchmark dataset.
+
+A proof-of-concept prototype integrates both modules into a unified, automated video-based application, validated on pre-recorded clinical footage. On an end-to-end counting evaluation spanning 7 videos with drip rates from 17–94 dpm, the heatmap-based counter achieved 91.0% mean counting accuracy versus 77.5% for the YOLOv8-based counter, with the heatmap approach showing markedly greater robustness at higher infusion rates (n=2 videos at ≥47 dpm). The study establishes a validated framework for holistic IV infusion monitoring aimed at improving patient safety and reducing the burden on clinical staff.
+
 ## Project Overview
 
 This system provides real-time monitoring of IV fluid administration through three main detection approaches:
@@ -32,7 +51,7 @@ The YOLO model is trained to predict bounding boxes around IV fluid drops. Each 
 
 ### Performance
 
-- **mAP@0.50**: 96.1% (Mean Average Precision at IoU threshold 0.5)
+- **mAP@0.50**: 95.34% (Mean Average Precision at IoU threshold 0.5, evaluated on a held-out test set)
 - **Real-time Processing**: Capable of processing video streams at 30+ FPS
 - **Robustness**: Handles various lighting conditions and backgrounds
 
@@ -42,9 +61,6 @@ The system provides real-time visualization with bounding boxes, track IDs, and 
 - Total drop count
 - Drip rate (drops per minute)
 - Time until next rate sample
-
-![YOLO Drop Detection Output](outputs/real_time_drop_yolo.png)
-*Real-time drop detection using YOLOv8 with bounding boxes, track IDs, and statistics panel*
 
 ### Training
 
@@ -77,16 +93,14 @@ The model learns to predict a 2D heatmap where each drop location is represented
 
 ### Performance
 
-- **Frame-wise Accuracy**: 88.58%
+- **Frame-wise Accuracy**: 88.44% (evaluated on a held-out test set)
+- **Recall**: 95.16%
 - **Real-time Processing**: Efficient inference suitable for video streams
 - **Advantages**: Provides spatial probability distribution, useful for uncertainty estimation
 
 ### Output
 
 The system visualizes the predicted heatmap overlaid on the input image, showing the model's confidence in drop locations.
-
-![Heatmap Drop Detection Output](outputs/heatmap_output%20(1).png)
-*Heatmap-based drop detection showing predicted heatmap visualization*
 
 ### Training
 
@@ -127,9 +141,6 @@ The system provides a comprehensive dashboard showing:
 - Preprocessed image (negative filtered)
 - Level classification with confidence
 - Alert status (Normal, Low, or Empty)
-
-![Level Monitor Output](outputs/level_monitor_output.png)
-*CNN-based fluid level detection dashboard showing classification results and alert status*
 
 ### Training
 
@@ -190,8 +201,13 @@ The integrated system provides a comprehensive monitoring interface combining:
 
 The system processes video input and generates both a processed video output and a CSV log file for analysis.
 
-![Integrated Monitor Output](outputs/integrated_monitor.png)
-*Integrated monitoring system combining YOLO drop detection and CNN level monitoring with time estimation and anomaly detection*
+### End-to-End Counting Evaluation
+
+The integrated prototype was validated on pre-recorded clinical video footage spanning a 7-video set with drip rates ranging from 17 to 94 drops per minute (dpm):
+
+- **Heatmap-based counter**: 91.0% mean counting accuracy
+- **YOLOv8-based counter**: 77.5% mean counting accuracy
+- **Key finding**: The heatmap-based counter showed markedly greater robustness at elevated infusion rates (proof-of-concept evaluation; n=2 videos at ≥47 dpm), making it the preferred counting approach for higher-flow scenarios.
 
 ## Project Structure
 
@@ -210,11 +226,7 @@ iv-fluids-level-monitor-and-drop-count/
 │   ├── drop_count_heatmap.py         # Heatmap-based drop counting script
 │   ├── level_alert_main.py           # Level detection script
 │   └── combined.py                   # Integrated monitoring system
-├── outputs/
-│   ├── real_time_drop_yolo.png       # YOLO detection output
-│   ├── heatmap_output (1).png        # Heatmap detection output
-│   ├── level_monitor_output.png      # Level detection output
-│   └── integrated_monitor.png        # Integrated system output
+├── outputs/                           # Generated outputs (videos, CSV logs)
 └── README.md                          # This file
 ```
 
@@ -369,29 +381,20 @@ The drop detection models (both YOLO and heatmap) were trained on a dataset of *
 - **Bounding Box Labels**: YOLO-format .txt files for object detection training
 - **Heatmap Targets**: 26x26 NumPy arrays with 2D Gaussian peaks for regression training
 
+**Dataset Details:**
+- **Title**: Image Dataset for Intravenous (IV) Drop Detection with Dual Annotations (Bounding Box and Heatmap)
+- **Repository**: IEEE DataPort
+- **DOI**: [10.21227/8g5q-zk62](https://dx.doi.org/10.21227/8g5q-zk62)
+- **Link**: https://ieee-dataport.org/documents/image-dataset-intravenous-iv-drop-detection-dual-annotations-bounding-box-and-heatmap
+
 **Dataset Citation:**
 Nishant Vasantkumar Hegde, Saksham Gupta, Atul Kumar Mishra, Pratiba D, Ramakanthkumar P, Sreelakshmi K, Shankar T, "Image Dataset for Intravenous (IV) Drop Detection with Dual Annotations (Bounding Box and Heatmap)", IEEE Dataport, December 26, 2025, doi:10.21227/8g5q-zk62
-
-**Dataset Access:**
-- **Title**: Image Dataset for Intravenous (IV) Drop Detection with Dual Annotations (Bounding Box and Heatmap)
-- **DOI**: https://dx.doi.org/10.21227/8g5q-zk62
-- **IEEE DataPort**: https://dx.doi.org/10.21227/8g5q-zk62
 
 ### Level Detection Dataset
 
 The level detection model was trained using datasets from Mendeley Data:
 - DOI: 10.17632/9mcj3rvvxb.1
 - DOI: 10.17632/n8k2zfr6xm.2
-
-## Future Enhancements
-
-- Integration of both drop detection approaches (YOLO and heatmap) with ensemble methods
-- Web-based dashboard for remote monitoring
-- Database logging for historical analysis and trend detection
-- Mobile app for alerts and monitoring
-- Additional fluid types support
-- Edge deployment optimization for embedded systems
-- Multi-camera support for comprehensive monitoring
 
 ## Contributing
 
@@ -405,14 +408,9 @@ The level detection model was trained using datasets from Mendeley Data:
 
 This project is intended for academic and research purposes only.
 
-## Authors
-
-1. Nishant V H [https://github.com/kernelops]
-2. Saksham Gupta
-3. Atul Mishra
-
 ## Acknowledgments
 
+- **Publication**: An Integrated Dual-Module Computer Vision System for IV Drip Rate and Fluid Level Monitoring, IEEE Access, Vol. 14 (DOI: [10.1109/ACCESS.2026.3687474](https://doi.org/10.1109/ACCESS.2026.3687474))
 - **Drop Detection Dataset**: Image Dataset for Intravenous (IV) Drop Detection with Dual Annotations (Bounding Box and Heatmap) - IEEE DataPort (DOI: 10.21227/8g5q-zk62)
 - **Level Detection Dataset**: Mendeley Data (DOI: 10.17632/9mcj3rvvxb.1, 10.17632/n8k2zfr6xm.2)
 

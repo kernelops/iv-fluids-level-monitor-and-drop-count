@@ -387,8 +387,8 @@ class VideoDropCounter:
 if __name__ == "__main__":
     
     # CONFIGURATION
-    MODEL_PATH = "drop_detector_final.pth"
-    VIDEO_PATH = "vid5.mp4"
+    MODEL_PATH = "<your_path>/models/drop_detector_heatmap.pth"
+    VIDEO_PATH = "<your_path>/testing/drop_count/test3.mp4"
     OUTPUT_PATH = "output_simple_counted.mp4"
     
     # DETECTION PARAMETERS

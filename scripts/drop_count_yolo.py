@@ -187,8 +187,8 @@ def detect_drip_rate(
 
 # ==============================================================
 if __name__ == "__main__":
-    video_file_path = "C:\\Users\\hegde\\Documents\\Github\\iv-fluids-level-monitor-and-drop-count\\test_vid_4.mp4"
-    yolo_weights_path = "best.pt"
+    video_file_path = "<your_path>/testing/drop_count/test1.mp4"
+    yolo_weights_path = "<your_path>/models/drop_detector_yolo.pt"
 
     detect_drip_rate( 
         video_path=video_file_path,
