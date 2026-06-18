@@ -214,20 +214,19 @@ The integrated prototype was validated on pre-recorded clinical video footage sp
 ```
 iv-fluids-level-monitor-and-drop-count/
 ├── models/
-│   ├── drop_detector_yolo.pt          # YOLO model for drop detection
-│   ├── drop_detector_heatmap.pth      # Heatmap model for drop detection
-│   └── iv-fluids-level-detection-model.h5  # CNN model for level detection
+│   ├── drop-detection_yolo.pt             # YOLO model for drop detection
+│   └── iv-fluids-level-detection-model.h5 # CNN model for level detection
 ├── notebooks/
-│   ├── iv-fluids-drop-detection-yolov8.ipynb    # YOLO training notebook
-│   ├── iv-fluids-drop-monitor-heatmap.ipynb     # Heatmap training notebook
-│   └── iv-fluids-level-monitor.ipynb            # Level detection training notebook
+│   ├── iv-fluids-drop-detection-heatmap-cnn.ipynb  # Heatmap training notebook
+│   ├── iv-fluids-drop-detection-yolov8.ipynb       # YOLO training notebook
+│   └── iv-fluids-level-monitor.ipynb               # Level detection training notebook
 ├── scripts/
-│   ├── drop_count_yolo.py            # YOLO-based drop counting script
-│   ├── drop_count_heatmap.py         # Heatmap-based drop counting script
-│   ├── level_alert_main.py           # Level detection script
-│   └── combined.py                   # Integrated monitoring system
-├── outputs/                           # Generated outputs (videos, CSV logs)
-└── README.md                          # This file
+│   ├── combined-level_alert-heatmap_cnn.py   # Integrated monitoring system (Heatmap + CNN)
+│   ├── combined-level_alert-yolov8.py        # Integrated monitoring system (YOLOv8 + CNN)
+│   ├── drop_count_heatmap.py                 # Heatmap-based drop counting script
+│   ├── drop_count_yolo.py                    # YOLO-based drop counting script
+│   └── level_alert_main.py                   # Level detection script
+└── README.md                                 # This file
 ```
 
 ## Installation & Setup
